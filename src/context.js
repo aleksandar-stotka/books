@@ -6,7 +6,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("a");
-  const [book, setBooks] = useState([]);
+  const [books, setBooks] = useState([]);
 
   const fetchBooks = useCallback(async () => {
     setLoading(true);
@@ -21,20 +21,26 @@ const AppProvider = ({ children }) => {
 
       if (items) {
         const newBooks = items.map((item) => {
-          const { description, title, averageRating } = item.volumeInfo;
-          const { id, selfLink } = item;
+          const { description, title, averageRating, infoLink } =
+            item.volumeInfo;
+          const { smallThumbnail } = item.volumeInfo.imageLinks;
+          const { id } = item;
 
           return {
             id: id,
             title: title,
             desc: description,
-            link: selfLink,
-            raiting: averageRating,
+            link: infoLink,
+            rating: averageRating,
+            image: smallThumbnail,
           };
         });
         setBooks(newBooks);
         console.log(newBooks);
+      } else {
+        setBooks([]);
       }
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +50,11 @@ const AppProvider = ({ children }) => {
     fetchBooks();
   }, []);
 
-  return <AppContext.Provider value="heloo">{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={{ loading, books, searchTerm, setSearchTerm }}>
+      {children}
+    </AppContext.Provider>
+  );
 };
 export const useGlobalContext = () => {
   return useContext(AppContext);

@@ -213,7 +213,7 @@ Cocktails List
   margin-bottom: 3.5rem;
   margin-top: 1rem;
 }
-.cocktails-center {
+.books-center {
   width: var(--smallWidth);
   margin: 0 auto;
   max-width: var(--fullWidth);
@@ -223,17 +223,16 @@ Cocktails List
   /* align-items: start; */
 }
 @media screen and (min-width: 576px) {
-  .cocktails-center {
+  .books-center {
     grid-template-columns: repeat(auto-fill, minmax(338.8px, 1fr));
   }
 }
 /* 
 ====== 
-Cocktail 
-======
+books======
 */
 
-.cocktail {
+.books {
   background: var(--mainWhite);
   margin-bottom: 2rem;
   box-shadow: var(--lightShadow);
@@ -242,27 +241,27 @@ Cocktail
   grid-template-rows: auto 1fr;
   border-radius: var(--mainBorderRadius);
 }
-.cocktail:hover {
+.books:hover {
   box-shadow: var(--darkShadow);
 }
-.cocktail img {
+.books img {
   height: 20rem;
   object-fit: cover;
   border-top-left-radius: var(--mainBorderRadius);
   border-top-right-radius: var(--mainBorderRadius);
 }
-.cocktail-footer {
+.books-footer {
   padding: 1.5rem;
 }
-.cocktail-footer h3,
-.cocktail-footer h4,
-.cocktail-footer p {
+.boooks-footer h3,
+.books-footer h4,
+.books-footer p {
   margin-bottom: 0.3rem;
 }
-.cocktail-footer h3 {
+.books-footer h3 {
   font-size: 2rem;
 }
-.cocktail-footer p {
+.books-footer p {
   color: var(--darkGrey);
   margin-bottom: 0.5rem;
 }
@@ -384,6 +383,15 @@ Cocktail
 }
 .loader:after {
   left: 1.5em;
+}
+.rating {
+  border-radius: 50%;
+  width:2rem;
+  height:2rem;
+  padding: 0.7em;
+  background-color:#476a2e;
+  color:floralwhite;
+
 }
 @-webkit-keyframes load1 {
   0%,
