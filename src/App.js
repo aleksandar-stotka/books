@@ -1,12 +1,21 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Home from "./Home";
-import BookItems from "./BooksItem";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Home from "./pages/Home";
+import SingleBook from "./pages/SingleBook";
 function App() {
   return (
     <div>
-      <Home />
-      <BookItems />
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/book/:id">
+            <SingleBook />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
