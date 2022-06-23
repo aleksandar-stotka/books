@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useCallback } from "react";
-
+import axios from "axios";
+const url = "https://www.googleapis.com/books/v1/volumes?q=";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
@@ -11,9 +12,8 @@ const AppProvider = ({ children }) => {
   const fetchBooks = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch(
-        "https://www.googleapis.com/books/v1/volumes?q=book&key=AIzaSyCugL3EmH4MtIyW--UPxSimPKWjIA5KmAg"
-      );
+      const response = await fetch(`${url}${searchTerm}`);
+
       const data = await response.json();
       console.log(data);
       //////////////////////////////////
@@ -44,11 +44,11 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
-  }, searchTerm);
+  }, [searchTerm]);
 
   useEffect(() => {
     fetchBooks();
-  }, []);
+  }, [searchTerm]);
 
   return (
     <AppContext.Provider value={{ loading, books, searchTerm, setSearchTerm }}>

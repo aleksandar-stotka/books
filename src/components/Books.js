@@ -12,7 +12,7 @@ function Books({ id, title, desc, link, rating, image }) {
         <p>{desc}</p>
         <a href={link}>link</a>
         <span className="rating">{rating}</span>
-        <Link to={`/cocktail/${id}`} className="btn btn-primary btn-details">
+        <Link to={`/book/${id}`} className="btn btn-primary btn-details">
           details
         </Link>
       </div>
